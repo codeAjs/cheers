@@ -8,6 +8,6 @@ class API {
 
   API() {
     _dio.options.baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1';
-    _dio.interceptors.add(PrettyDioLogger());
+    //_dio.interceptors.add(PrettyDioLogger());
   }
 }

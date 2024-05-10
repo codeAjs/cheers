@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class CocktailModel {
   List<Drinks>? drinks;
 
