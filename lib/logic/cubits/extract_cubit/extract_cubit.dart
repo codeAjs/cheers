@@ -1,18 +1,19 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import '../../data/models/cocktail_model.dart';
+import '../../../data/models/cocktail_model.dart';
 
 part 'extract_state.dart';
 
 class ExtractCubit extends Cubit<ExtractState> {
-  ExtractCubit(CocktailModel cocktail) : super(ExtractInitialState()) {
+  ExtractCubit(Drinks cocktail) : super(ExtractInitialState()) {
     propertiesExtracting(cocktail);
   }
 
-  void propertiesExtracting(CocktailModel cocktail) {
+  void propertiesExtracting(Drinks drinks) {
     emit(ExtractStartingState());
-    final Map<String, dynamic> drink = cocktail.toJson()['drinks'][0];
+    //final Map<String, dynamic> drink = cocktail.toJson()['drinks'][0];
+    final Map<String, dynamic> drink = drinks.toJson();
     final ingredients = <String>[];
     final measures = <String, String>{};
     for (var i = 1; i <= 15; i++) {

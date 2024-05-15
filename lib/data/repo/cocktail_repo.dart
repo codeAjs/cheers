@@ -15,4 +15,12 @@ class CocktailRepo {
       rethrow;
     }
   }
+
+  Future<Response> searchCocktail(String name) async {
+    try {
+      return await api.sendRequest.get('/search.php?s=$name');
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

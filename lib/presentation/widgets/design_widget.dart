@@ -45,8 +45,7 @@ class YellowContainer extends StatelessWidget {
 }
 
 class MainImage {
-  static Widget mainImage(CocktailModel cocktail) {
-    final drink = cocktail.drinks![0];
+  static Widget mainImage(Drinks drink) {
     return Center(
       child: Container(
         margin: const EdgeInsets.all(5),

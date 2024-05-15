@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cheers/data/models/cocktail_model.dart';
 import 'package:cheers/logic/cubits/cocktail_cubit/cocktail_cubit.dart';
-import 'package:cheers/logic/cubits/extract_cubit.dart';
+import 'package:cheers/logic/cubits/extract_cubit/extract_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -10,14 +10,13 @@ import 'package:gap/gap.dart';
 import '../widgets/design_widget.dart';
 
 class CocktailDetailsScreen extends StatelessWidget {
-  CocktailDetailsScreen(this.cocktail, {super.key});
+  CocktailDetailsScreen(this.drink, {super.key});
 
-  final CocktailModel cocktail;
+  final Drinks drink;
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    final drink = cocktail.drinks![0];
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -52,7 +51,7 @@ class CocktailDetailsScreen extends StatelessWidget {
                           ),
 
                           /// MAIN IMAGE
-                          MainImage.mainImage(cocktail),
+                          MainImage.mainImage(drink),
 
                           const Gap(16),
 

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:cheers/data/repo/cocktail_repo.dart';
 import 'package:dio/dio.dart';
@@ -10,14 +9,14 @@ part 'cocktail_state.dart';
 
 class CocktailCubit extends Cubit<CocktailState> {
   CocktailCubit() : super(CocktailInitialState()) {
-    fetchCocktail();
+    fetchRandomCocktail();
   }
 
   List<CocktailModel>? _cachedModel;
   List<CocktailModel>? get cachedModel => _cachedModel;
 
   CocktailRepo cocktailRepo = CocktailRepo();
-  Future<void> fetchCocktail() async {
+  Future<void> fetchRandomCocktail() async {
     try {
       emit(CocktailLoadingState());
       List<CocktailModel> models = [];
@@ -30,6 +29,7 @@ class CocktailCubit extends Cubit<CocktailState> {
         }
       }
 
+      _cachedModel = models;
       emit(CocktailLoadedState(models));
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
@@ -37,4 +37,5 @@ class CocktailCubit extends Cubit<CocktailState> {
       }
     }
   }
+
 }

@@ -10,6 +10,7 @@ class CocktailModel {
       drinks = <Drinks>[];
       json['drinks'].forEach((v) {
         drinks!.add(Drinks.fromJson(v));
+        //log('drink from json: ${Drinks.fromJson(v)}');
       });
     }
   }

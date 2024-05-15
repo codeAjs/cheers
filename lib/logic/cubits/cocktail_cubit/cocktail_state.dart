@@ -27,3 +27,5 @@ final class CocktailErrorState extends CocktailState {
   @override
   List<Object?> get props => [e];
 }
+
+
