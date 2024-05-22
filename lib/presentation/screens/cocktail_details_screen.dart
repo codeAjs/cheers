@@ -22,125 +22,125 @@ class CocktailDetailsScreen extends StatelessWidget {
           title: const Text(
             'Cheers',
           ),
+          backgroundColor: Colors.black12.withOpacity(0.01),
+          foregroundColor: Colors.white,
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: BlocBuilder<ExtractCubit, ExtractState>(
-              builder: (context, state) {
-                if (state is ExtractStartingState) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: BlocBuilder<ExtractCubit, ExtractState>(
+            builder: (context, state) {
+              if (state is ExtractStartingState) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-                if (state is ExtractEndState) {
-                  return ListView(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// COCKTAIL NAME
-                          Center(
-                            child: Text(
-                              drink.strDrink!,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.clip,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
+              if (state is ExtractEndState) {
+                return ListView(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /// COCKTAIL NAME
+                        Center(
+                          child: Text(
+                            drink.strDrink!,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.clip,
+                            style: Theme.of(context).textTheme.headlineMedium,
                           ),
+                        ),
 
-                          /// MAIN IMAGE
-                          MainImage.mainImage(drink),
+                        /// MAIN IMAGE
+                        MainImage.mainImage(drink),
 
-                          const Gap(16),
+                        const Gap(16),
 
-                          /// CATEGORY
-                          Text(
-                            'Category',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          SizedBox(
-                            height: 60,
-                            child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      YellowContainer(drink.strCategory!),
-                                      //
-                                      const Gap(8),
+                        /// CATEGORY
+                        Text(
+                          'Category',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        SizedBox(
+                          height: 60,
+                          child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    YellowContainer(drink.strCategory!),
+                                    //
+                                    const Gap(8),
 
-                                      /// ALCOHOLIC
-                                      YellowContainer(drink.strAlcoholic!),
-                                    ],
-                                  ),
-                                ]),
-                          ),
-
-                          /// GLASS CATEGORY
-                          Text(
-                            'Glass',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-
-                          /// 2nd Row
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              /// GLASS
-                              YellowContainer(drink.strGlass!),
-                            ],
-                          ),
-                          //
-                          const Gap(16),
-
-                          /// INSTRUCTIONS
-                          Text(
-                            'Instructions',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5),
-                              //width: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.yellowAccent.withOpacity(0.4),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Text(
-                                  drink.strInstructions!,
-                                  textAlign: TextAlign.start,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
+                                    /// ALCOHOLIC
+                                    YellowContainer(drink.strAlcoholic!),
+                                  ],
                                 ),
-                              )),
-                          const Gap(16.0),
-                          Text(
-                            'Ingredients',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          const Gap(8),
-                          Text(
-                              'Total ingredients: ${state.ingredients!.length}'),
-                          //
-                          const Gap(8),
+                              ]),
+                        ),
 
-                          /// INGREDIENTS IMAGE LIST
-                          IngredientImages(state.ingredients!,
-                              state.ingredientImages!, state.measures!,
-                              scrollController: _scrollController)
-                        ],
-                      )
-                    ],
-                  );
-                }
+                        /// GLASS CATEGORY
+                        Text(
+                          'Glass',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
 
-                return const SizedBox.shrink();
-              },
-            ),
+                        /// 2nd Row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            /// GLASS
+                            YellowContainer(drink.strGlass!),
+                          ],
+                        ),
+                        //
+                        const Gap(16),
+
+                        /// INSTRUCTIONS
+                        Text(
+                          'Instructions',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        Container(
+                            margin: const EdgeInsets.symmetric(vertical: 5),
+                            //width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.yellowAccent.withOpacity(0.4),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Text(
+                                drink.strInstructions!,
+                                textAlign: TextAlign.start,
+                                style:
+                                    Theme.of(context).textTheme.titleMedium,
+                              ),
+                            )),
+                        const Gap(16.0),
+                        Text(
+                          'Ingredients',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const Gap(8),
+                        Text(
+                            'Total ingredients: ${state.ingredients!.length}'),
+                        //
+                        const Gap(8),
+
+                        /// INGREDIENTS IMAGE LIST
+                        IngredientImages(state.ingredients!,
+                            state.ingredientImages!, state.measures!,
+                            scrollController: _scrollController)
+                      ],
+                    )
+                  ],
+                );
+              }
+
+              return const SizedBox.shrink();
+            },
           ),
         ));
   }

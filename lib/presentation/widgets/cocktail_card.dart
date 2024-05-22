@@ -26,7 +26,7 @@ class CocktailCard extends StatelessWidget {
       child: SizedBox(
         height: 69,
         child: Card(
-          //color: Colors.yellow[700],
+          color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
           elevation: 10,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -54,7 +54,9 @@ class CocktailCard extends StatelessWidget {
                 // DRINK'S NAME
                 Text(
                   drinks?.strDrink ?? '',
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),
